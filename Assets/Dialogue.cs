@@ -27,44 +27,33 @@ public class Dialogue : MonoBehaviour
     [TextArea]
     private string[] dialogueWords;
 
-    [SerializeField]
-    private Sprite[] portrait;
 
     private bool dialogueActivated;
     private int step;
 
     void Start()
     {
-        // Ensure the dialogue canvas is not visible at the start
-        dialogueCanvas.SetActive(false);
+        dialogueCanvas.SetActive(false); // Ensure canvas starts inactive
+        step = 0; // Initialize step counter
     }
 
     void Update()
     {
         if (Input.GetButtonDown("Interact") && dialogueActivated)
         {
-            if(step >= speaker.Length)
+            if (step >= speaker.Length)
             {
                 dialogueCanvas.SetActive(false);
-                step = 0;
-            }
-            else
-            {
-
-            dialogueCanvas.SetActive(true);
-            speakerText.text = speaker[0];
-            dialogueText.text = dialogueWords[0];
-            portraitImage.sprite = portrait[0];
-            step +=1;
-            
+                step = 0; // Reset step counter
+                return; // Exit Update() early
             }
 
-
             dialogueCanvas.SetActive(true);
-            speakerText.text = speaker[0];
-            dialogueText.text = dialogueWords[0];
-            portraitImage.sprite = portrait[0];
-            step +=1;
+            speakerText.text = speaker[step];
+            dialogueText.text = dialogueWords[step];
+
+
+            step += 1; // Increment step counter
         }
     }
 
@@ -82,6 +71,7 @@ public class Dialogue : MonoBehaviour
         {
             dialogueActivated = false;
             dialogueCanvas.SetActive(false);
+            step = 0; // Reset step counter when player exits trigger
         }
     }
 }
