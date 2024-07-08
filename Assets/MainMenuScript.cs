@@ -1,16 +1,4 @@
-/*using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class MainMenuScript : MonoBehaviour
-{
-    public AudioSource audio;
-    public void playButton()
-    {
-        audio.Play();
-    }
-}
-*/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,6 +13,14 @@ public class MainMenuScript : MonoBehaviour
         if (audio != null)
         {
             audio.Play();
+                    // Exit Game
+        Debug.Log("QUIT");
+        Application.Quit();
         }
+
+
     }
+
+ 
+
 }

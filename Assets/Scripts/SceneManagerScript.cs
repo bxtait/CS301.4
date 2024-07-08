@@ -49,4 +49,5 @@ public class SceneManagerScript : MonoBehaviour
         // Load the next scene
         SceneManager.LoadScene(sceneName);
     }
+
 }
